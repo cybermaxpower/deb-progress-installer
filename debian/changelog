@@ -1,5 +1,20 @@
+deb-progress-installer (1.0.1-0ubuntu1~resoluteubuntu4) resolute; urgency=medium
+
+  * 
+
+ -- cybermaxpower <carber.maxpower@gmail.com>  Sat, 23 May 2026 23:32:03 +0100
+
+deb-progress-installer (1.0.1-0ubuntu1~resoluteubuntu3) resolute; urgency=medium
+
+  * Fixed minor bugs and updated installation logic.
+
+ -- cybermaxpower <carber.maxpower@gmail.com>  Sat, 23 May 2026 17:05:16 +0100
+
 deb-progress-installer (1.0.0-0ubuntu1~resolute) resolute; urgency=medium
 
-  * Initial release for Ubuntu 26.04 LTS.
+  * IMPROVED ui xp
+
+ -- matt <carber.maxpower@gmail.com>  Sat, 23 May 2026 17:05:00 +0100
+  * IMPROVED ui xp
 
  -- matt <carber.maxpower@gmail.com>  Sat, 23 May 2026 17:05:00 +0100
