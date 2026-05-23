@@ -1,0 +1,5 @@
+deb-progress-installer (1.0.0-0ubuntu1~resolute) resolute; urgency=medium
+
+  * Initial release for Ubuntu 26.04 LTS.
+
+ -- matt <carber.maxpower@gmail.com>  Sat, 23 May 2026 17:05:00 +0100

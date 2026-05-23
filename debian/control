@@ -1,0 +1,21 @@
+Source: deb-progress-installer
+Section: utils
+Priority: optional
+Maintainer: Matt <carber.maxpower@gmail.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.2
+
+Package: deb-progress-installer
+Architecture: all
+Depends: zenity, policykit-1, ${misc:Depends}
+Section: utils
+Priority: optional
+Description: Graphical DEB Installer
+ A lightweight right-click utility that uses Zenity to show a visual
+ progress bar while installing Debian packages.
+
+
+
+
+
+
