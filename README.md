@@ -28,7 +28,7 @@ sudo apt install deb-progress-installer
 ### Option 2: Manual Download (No PPA Required)
 If you are using a non-Ubuntu distribution (like pure Debian or LMDE), or prefer not to add a PPA to your system, you can download and install the raw package manually:
 
-Head over to the Latest Release page.
+Head over to the [Releases](releases) page.
 
 Download the .deb file from the Assets section at the bottom of the release.
 
