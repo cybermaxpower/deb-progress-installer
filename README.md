@@ -29,18 +29,21 @@ sudo apt update
 sudo apt install deb-progress-installer
 ```
 
-### Option 2: Manual Download (No PPA Required)
-If you are using a non-Ubuntu distribution (like pure Debian or LMDE), or prefer not to add a PPA to your system, you can download and install the raw package manually:
+### Option 2: Manual Download (Zorin OS 18 / Ubuntu / Debian / LMDE)
+If you prefer not to add a PPA, or are using a non-Ubuntu distribution, you can install the package directly.
 
-Head over to the [Releases](releases) page.
+[![Download .deb Installer](https://img.shields.io/badge/Download-.deb_Installer-blue?style=for-the-badge&logo=ubuntu)](https://github.com/cybermaxpower/deb-progress-installer/releases/download/v1.0.1/deb-progress-installer_1.0.1_all.deb)
 
-Download the .deb file from the Assets section at the bottom of the release.
+#### Method A: Graphical Install (Easiest)
+1. Click the **Download .deb Installer** button above.
+2. Double-click the downloaded file in your **Downloads** folder to open your system's Software Store.
+3. Click **Install**.
 
-Install it using your system's package manager or by running the following command in your terminal (replace version with the downloaded version number):
+#### Method B: Quick Terminal Install
+If you prefer the command line, copy and paste this single command. It downloads the release securely and automatically installs any missing tools (like `zenity`):
 
-```Bash
-sudo dpkg -i deb-progress-installer_version_all.deb
-sudo apt-get install -f
+```bash
+wget -qO/tmp/progress.deb https://github.com/cybermaxpower/deb-progress-installer/releases/download/v1.0.1/deb-progress-installer_1.0.1_all.deb && sudo apt install /tmp/progress.deb -y
 ```
 
 ## 🛠️ How to Enable & Use It
