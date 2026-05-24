@@ -34,3 +34,8 @@ From now on, whenever you want to install a software package:
 Simply double-click or right-click -> Open With any .deb file.
 
 A clean, visual Zenity progress bar will pop up to show you exactly how the installation is progressing!
+
+---
+
+## Development Notes
+This application was designed and developed in collaboration with Google Gemini, utilizing AI-assisted software engineering to build the core utility and structure the native Debian packaging pipeline.
