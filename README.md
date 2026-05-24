@@ -1,6 +1,7 @@
-# Debian Package Progress Installer
+# deb-progress-installer
 
-A lightweight utility for Ubuntu 26.04, Ubuntu Cinnamon 26.04 etc. hows a visual progress bwhenusing Zenity when installing local `.deb` files.
+A lightweight graphical utility that uses Zenity to show a visual progress bar while installing local Debian (`.deb`) packages. 
+
 
 ---
 
