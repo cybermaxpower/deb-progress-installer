@@ -2,6 +2,16 @@
 
 A lightweight graphical utility that uses Zenity to show a visual progress bar while installing local Debian (`.deb`) packages.
 
+
+## 💡 Motivation: Why This Was Created
+
+This utility was born out of frustration with the current state of local package installation on modern Linux distributions. 
+
+For years, tools like `GDebi` were the open-source standard, but they are no longer under active development. This legacy code causes them to frequently freeze or crash on modern systems like Ubuntu 26.04. Meanwhile, default Software Centers have become heavily bloated, slow to load, and often push users toward Snaps rather than a simple local installation.
+
+`deb-progress-installer` provides a third option: a dead-simple, blazing-fast, and reliable native tool that does one thing and does it well—installing your local packages with a clean, visual progress bar without any of the baggage.
+
+
 ---
 
 ## 🚀 One-Time Setup
@@ -32,7 +42,7 @@ sudo apt-get install -f
 ## 🛠️ How to Enable & Use It
 Once installed, you need to tell your file manager to use this tool to open Debian packages. You only have to do this once!
 
-Step 1: Set the Default Handler
+### Step 1: Set the Default Handler
 Find any .deb file on your computer (for example, in your Downloads folder).
 
 Right-click the .deb file.
@@ -43,7 +53,7 @@ Look through the list and select Deb Installer.
 
 Click the Set as Default button.
 
-Step 2: Run an Installation
+### Step 2: Run an Installation
 From now on, whenever you want to install a software package:
 
 Simply double-click or right-click -> Open With any .deb file.
