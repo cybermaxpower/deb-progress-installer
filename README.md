@@ -1,6 +1,6 @@
 # deb-progress-installer
 
-A lightweight graphical utility that uses Zenity to show a visual progress bar while installing local Debian (`.deb`) packages.
+A lightweight graphical utility that uses [Zenity](https://github.com/GNOME/zenity) to show a visual progress bar while installing local Debian (`.deb`) packages.
 
 
 ## 💡 Motivation: Why This Was Created
