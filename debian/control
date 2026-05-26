@@ -1,14 +1,14 @@
 Source: deb-progress-installer
 Section: utils
 Priority: optional
-Maintainer: cybermaxpower <carber.maxpower@gmail.com>
+Maintainer: Your Name <your.email@example.com>
 Build-Depends: debhelper-compat (= 13)
 Standards-Version: 4.6.2
 
 Package: deb-progress-installer
 Architecture: all
-Depends: ${misc:Depends}, python3, python3-gi, gir1.2-gtk-3.0
-Description: A graphical utility to install .deb packages with a progress bar.
- This utility provides a clean GUI interface for installing local Debian packages
- while showing a real-time progress bar.
-
+Depends: ${misc:Depends}, zenity, dpkg, coreutils
+Description: Lightweight graphical progress bar wrapper for local deb installations
+ A utility that uses Zenity to show a visual progress bar while 
+ installing local Debian (.deb) packages, replacing legacy tools 
+ like GDebi.

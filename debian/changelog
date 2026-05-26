@@ -1,3 +1,8 @@
+deb-progress-installer (1.0.1-0~ppa1~noble) noble; urgency=medium
+
+  * Release optimized for Ubuntu 24.04 LTS backend (Zorin OS 18 compatible).
+
+ -- cybermaxpower <carber.maxpower@gmail.com>  Sun, 24 May 2026 17:00:00 +0100
 deb-progress-installer (1.0.1-0ubuntu1~resoluteubuntu4) resolute; urgency=medium
 
   * 
