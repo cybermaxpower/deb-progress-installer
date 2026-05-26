@@ -20,19 +20,12 @@ For years, tools like `GDebi` were the open-source standard, but they are no lon
 
 ## 🚀 One-Time Setup
 
-### Option 1: Ubuntu 26.04 PPA
-To get the application installed and ensure you receive automatic background updates, open your terminal and run the following commands:
 
-```Bash
-sudo add-apt-repository ppa:cybermaxpower/deb-progress-installer
-sudo apt update
-sudo apt install deb-progress-installer
-```
+### Manual Download (Ubuntu / Zroin / Debian / LMDE)
 
-### Option 2: Manual Download (Zorin OS 18 / Ubuntu / Debian / LMDE)
-If you prefer not to add a PPA, or are using a non-Ubuntu distribution, you can install the package directly.
+You can install the package directly without needing any external repositories. This works perfectly on Ubuntu, Debian, and other supported Linux distributions:
 
-[![Download .deb Installer](https://img.shields.io/badge/Download-.deb_Installer-blue?style=for-the-badge&logo=ubuntu)](https://github.com/cybermaxpower/deb-progress-installer/releases/download/v1.0.1/deb-progress-installer_1.0.1_all.deb)
+[![Download .deb Installer](https://img.shields.io/badge/Download-.deb_Installer-blue?style=for-the-badge&logo=ubuntu)](https://github.com/cybermaxpower/deb-progress-installer/releases/latest/download/deb-progress-installer.deb)
 
 #### Method A: Graphical Install (Easiest)
 1. Click the **Download .deb Installer** button above.
@@ -43,7 +36,7 @@ If you prefer not to add a PPA, or are using a non-Ubuntu distribution, you can 
 If you prefer the command line, copy and paste this single command. It downloads the release securely and automatically installs any missing tools (like `zenity`):
 
 ```bash
-wget -qO/tmp/progress.deb https://github.com/cybermaxpower/deb-progress-installer/releases/download/v1.0.1/deb-progress-installer_1.0.1_all.deb && sudo apt install /tmp/progress.deb -y
+wget -O /tmp/installer.deb https://github.com/cybermaxpower/deb-progress-installer/releases/latest/download/deb-progress-installer.deb && sudo apt install /tmp/installer.deb
 ```
 
 ## 🛠️ How to Enable & Use It
