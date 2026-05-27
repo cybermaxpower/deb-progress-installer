@@ -2,7 +2,7 @@
 # Deb-progress-installer
 
 <p align="center">
-  <img src="Live-Preview.png" alt="Application Preview" width="100%">
+  <img src="Live-Preview.png?v=2" alt="Application Preview" width="100%">
 </p>
 
 
