@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export GDK_BACKEND=wayland,x11
+
 # Ensure a file was passed
 if [ -z "$1" ]; then
     zenity --error --title="DEB Installer" --text="No installation file provided." --width=300

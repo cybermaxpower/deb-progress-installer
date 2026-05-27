@@ -1,0 +1,10 @@
+Package: deb-progress-installer
+Version: 1.0.3
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: matt <carber.maxpower@gmail.com>
+Depends: zenity, bash, apt
+Description: Lightweight graphical progress bar wrapper for local deb installations
+ A utility that uses Zenity to show a visual progress bar while 
+ installing local Debian (.deb) packages..
