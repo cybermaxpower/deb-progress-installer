@@ -4,17 +4,17 @@ deb-progress-installer (1.0.3) unstable; urgency=medium
   * Explicitly define native dependencies (zenity, bash, apt) in control file.
   * Clean up project structure and remove deprecated debhelper configs.
 
- -- cybermaxpower <your.email@example.com>  Fri, 29 May 2026 13:30:00 +0100
+ -- cybermaxpower <carber.maxpower@gmail.com>  Fri, 29 May 2026 13:30:00 +0100
 
 deb-progress-installer (1.0.2) unstable; urgency=medium
 
   * Added localized progress bar wrapping for local deb installations.
   * Improved visual styling and text handling.
 
- -- cybermaxpower <your.email@example.com>  Mon, 22 Jun 2026 12:00:00 +0100
+ -- cybermaxpower <carber.maxpower@gmail.com>  Mon, 22 Jun 2026 12:00:00 +0100
 
 deb-progress-installer (1.0.1) unstable; urgency=low
 
   * Initial stable release.
 
- -- cybermaxpower <your.email@example.com>  Mon, 15 Jun 2026 10:00:00 +0100
+ -- cybermaxpower <carber.maxpower@gmail.com>  Mon, 15 Jun 2026 10:00:00 +0100
