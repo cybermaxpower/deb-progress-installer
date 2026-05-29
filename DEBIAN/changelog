@@ -1,3 +1,10 @@
+deb-progress-installer (1.0.4) unstable; urgency=medium
+
+  * Added and tested version 1.0.4 release updates.
+  * Minor optimizations and script stability improvements.
+
+ -- cybermaxpower <carber.maxpower@gmail.com>  Fri, 29 May 2026 23:30:00 +0100
+
 deb-progress-installer (1.0.3) unstable; urgency=medium
 
   * Fix Wayland scaling support for graphical UI.
