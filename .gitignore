@@ -1,0 +1,13 @@
+# Ignore compiled Debian packages (keep the repo lightweight)
+*.deb
+
+# Ignore temporary dpkg and debhelper build artifacts
+DEBIAN/files
+DEBIAN/substvars
+DEBIAN/*.log
+DEBIAN/.debhelper/
+
+# Ignore system clutter
+.DS_Store
+*~
+*.swp
