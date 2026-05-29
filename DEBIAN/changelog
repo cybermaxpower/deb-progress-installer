@@ -1,32 +1,20 @@
-deb-progress-installer (1.0.2~ppa1~noble) UNRELEASED; urgency=medium
+deb-progress-installer (1.0.3) unstable; urgency=medium
 
-  * Release 1.0.2: Updated installation logic
-  * Release 1.0.2: Updated installation logic
+  * Fix Wayland scaling support for graphical UI.
+  * Explicitly define native dependencies (zenity, bash, apt) in control file.
+  * Clean up project structure and remove deprecated debhelper configs.
 
- -- cybermaxpower <carber.maxpower@gmail.com>  Tue, 26 May 2026 17:50:20 +0100
+ -- cybermaxpower <your.email@example.com>  Fri, 29 May 2026 13:30:00 +0100
 
-deb-progress-installer (1.0.1-0~ppa1~noble) noble; urgency=medium
+deb-progress-installer (1.0.2) unstable; urgency=medium
 
-  * Release optimized for Ubuntu 24.04 LTS backend (Zorin OS 18 compatible).
+  * Added localized progress bar wrapping for local deb installations.
+  * Improved visual styling and text handling.
 
- -- cybermaxpower <carber.maxpower@gmail.com>  Sun, 24 May 2026 17:00:00 +0100
-deb-progress-installer (1.0.1-0ubuntu1~resoluteubuntu4) resolute; urgency=medium
+ -- cybermaxpower <your.email@example.com>  Mon, 22 Jun 2026 12:00:00 +0100
 
-  * 
+deb-progress-installer (1.0.1) unstable; urgency=low
 
- -- cybermaxpower <carber.maxpower@gmail.com>  Sat, 23 May 2026 23:32:03 +0100
+  * Initial stable release.
 
-deb-progress-installer (1.0.1-0ubuntu1~resoluteubuntu3) resolute; urgency=medium
-
-  * Fixed minor bugs and updated installation logic.
-
- -- cybermaxpower <carber.maxpower@gmail.com>  Sat, 23 May 2026 17:05:16 +0100
-
-deb-progress-installer (1.0.0-0ubuntu1~resolute) resolute; urgency=medium
-
-  * IMPROVED ui xp
-
- -- matt <carber.maxpower@gmail.com>  Sat, 23 May 2026 17:05:00 +0100
-  * IMPROVED ui xp
-
- -- matt <carber.maxpower@gmail.com>  Sat, 23 May 2026 17:05:00 +0100
+ -- cybermaxpower <your.email@example.com>  Mon, 15 Jun 2026 10:00:00 +0100
