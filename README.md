@@ -11,15 +11,7 @@ A lightweight graphical utility that uses [Zenity](https://github.com/GNOME/zeni
 
 ## 💡 Motivation: Why This Was Created
 
-This utility was born out of frustration with the current state of local package installation on modern Linux distributions. 
-
-For years, tools like `GDebi` were the open-source standard, but they are no longer under active development. This legacy code causes them to frequently freeze or crash on modern desktop environments like Ubuntu 26.04. Meanwhile, default Software Centers have become heavily bloated, slow to load, and often push users toward Snaps rather than a simple local installation.
-
-## How It Differs From Tools Like `deb-get`:
-* **A GUI-First Experience:** Unlike CLI utilities like `deb-get`—which focus on downloading popular third-party software from the terminal—`deb-progress-installer` acts as a native desktop mouse-click handler. It is designed for those who just want to double-click a local file in their file manager.
-* **Granular Progress Tracking:** Standard command-line tools often hide what they are doing behind dense text walls. This tool uses a clean, visual Zenity progress bar that parses the installation frame-by-frame, tracking granular stages like data unpacking, dependency resolution, and real-time backend configuration so you are never left guessing if your installation is stuck.
-
-`deb-progress-installer` fills this gap perfectly: a dead-simple, blazing-fast, and reliable native tool that does one thing and does it well—installing your local packages with beautiful, real-time graphical progress tracking without any of the baggage.
+Traditional GUI installers used to be the go-to standard, but they've been abandoned for years. Running that legacy code on modern systems like Ubuntu 26.04 frequently leads to frustrating freezes and crashes. To make matters worse, official Software Centers have become sluggish and bloated, often trying to force-feed users Snaps instead of just handling a simple local .deb file.
 
 
 ---
@@ -70,6 +62,12 @@ A clean, visual Zenity progress bar will pop up to show you exactly how the inst
 Standard command-line tools like dpkg don't natively provide a graphical progress readout, which can leave desktop users wondering if an installation is stuck.
 
 deb-progress-installer acts as an intelligent, lightweight wrapper that bridges the gap between the Debian package management backend and the desktop environment.
+
+## How It Differs From Tools Like `deb-get`:
+* **A GUI-First Experience:** Unlike CLI utilities like `deb-get`—which focus on downloading popular third-party software from the terminal—`deb-progress-installer` acts as a native desktop mouse-click handler. It is designed for those who just want to double-click a local file in their file manager.
+* **Granular Progress Tracking:** Standard command-line tools often hide what they are doing behind dense text walls. This tool uses a clean, visual Zenity progress bar that parses the installation frame-by-frame, tracking granular stages like data unpacking, dependency resolution, and real-time backend configuration so you are never left guessing if your installation is stuck.
+
+`deb-progress-installer` fills this gap perfectly: a dead-simple, blazing-fast, and reliable native tool that does one thing and does it well—installing your local packages with beautiful, real-time graphical progress tracking without any of the baggage.
 
 Behind the Scenes:
 Root Privilege Handling: The application leverages pkexec or sudo to securely elevate permissions, ensuring safe package execution.
