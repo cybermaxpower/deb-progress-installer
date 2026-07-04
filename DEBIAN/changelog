@@ -1,3 +1,9 @@
+deb-progress-installer (1.0.5) unstable; urgency=medium
+
+  * Added and tested version 1.0.5 release updates.
+  * Added Reinstall or Remove if application is install on system.
+
+ -- cybermaxpower <carber.maxpower@gmail.com>  Sat, 04 Jul 2026 21:50:00 +0100
 deb-progress-installer (1.0.4) unstable; urgency=medium
 
   * Added and tested version 1.0.4 release updates.
