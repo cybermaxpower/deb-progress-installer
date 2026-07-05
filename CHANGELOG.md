@@ -1,6 +1,13 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## [1.0.7] - 2026-07-05
+
+### 🐛 Bug Fixes & Rendering Stability
+* **X11/Compiz Transparency Fix:** Resolved a severe hardware-acceleration issue where the UI would render completely transparently or only become opaque upon mouse hover on certain desktop environments. Added an explicit `GSK_RENDERER=cairo` fallback engine pipeline to force clean rendering on non-GNOME X11 compositors.
+* **Native Theme Enforcement:** Completely removed experimental sandboxed CSS overrides that inadvertently stripped native desktop dark/light mode configurations. The application now gracefully inherits global desktop theme choices (like *Yaru* or *Adwaita*).
+* **Selection Box Clearance:** Natively expanded the choice list window framework parameters to `--width=480 --height=320`. This grants full vertical row clearance to selection options, preventing text clipping on the uninstallation/reinstallation dialogue under heavy desktop system font scaling.
+* **Code Optimization:** Cleaned up redundant dependency logic checks to streamline script execution performance.
 
 ## [1.0.4] - 2026-05-29
 
