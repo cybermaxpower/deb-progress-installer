@@ -6,6 +6,10 @@ export GDK_BACKEND=wayland,x11
 # Use the classic 2D Cairo engine (vastly faster than 'software' 3D emulation on the CPU)
 export GSK_RENDERER=cairo
 
+# FORCE background terminal utilities to output in English 
+# This prevents localized systems (e.g., Russian, French) from breaking the dependency parser
+export LC_ALL=C
+
 # ==========================================
 # RUNTIME GTK4 TRANSPARENCY PATCH (SANDBOX)
 # ==========================================
