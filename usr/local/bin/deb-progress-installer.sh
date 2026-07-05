@@ -3,10 +3,32 @@
 # Ensure Zenity plays nicely with both Wayland and X11
 export GDK_BACKEND=wayland,x11
 
-# Force software rendering to completely eliminate GTK4 alpha/transparency bugs on legacy X11 compositors (e.g., Compiz)
-export GSK_RENDERER=software
-# Fix GTK4 rendering, redraw, and transparency glitches on X11 compositors (e.g., Ubuntu Unity / Compiz)
-#export GSK_RENDERER=cairo
+# Use the classic 2D Cairo engine (vastly faster than 'software' 3D emulation on the CPU)
+export GSK_RENDERER=cairo
+
+# ==========================================
+# RUNTIME GTK4 TRANSPARENCY PATCH (SANDBOX)
+# ==========================================
+# Create a secure temporary configuration environment
+GTK_SANDBOX=$(mktemp -d -t deb-installer-sandbox.XXXXXX)
+mkdir -p "$GTK_SANDBOX/gtk-4.0"
+
+# Automatically clean up the temporary sandbox directory when the script exits
+trap 'rm -rf "$GTK_SANDBOX"' EXIT
+
+# Inherit the user's existing custom CSS modifications if they have any
+if [ -f "$HOME/.config/gtk-4.0/gtk.css" ]; then
+    cp "$HOME/.config/gtk-4.0/gtk.css" "$GTK_SANDBOX/gtk-4.0/gtk.css"
+fi
+
+# Append the precise target selectors to force solid background rendering
+# without breaking child component layouts or hardcoding specific colors
+cat << 'EOF' >> "$GTK_SANDBOX/gtk-4.0/gtk.css"
+window, dialog, .background, main, box.vertical {
+    background-color: @window_bg_color;
+    opacity: 1.0;
+}
+EOF
 
 # Ensure an installation file was passed
 if [ -z "$1" ]; then
