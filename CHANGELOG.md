@@ -9,6 +9,13 @@ All notable changes to this project will be documented in this file.
 * **Selection Box Clearance:** Natively expanded the choice list window framework parameters to `--width=480 --height=320`. This grants full vertical row clearance to selection options, preventing text clipping on the uninstallation/reinstallation dialogue under heavy desktop system font scaling.
 * **Code Optimization:** Cleaned up redundant dependency logic checks to streamline script execution performance.
 
+## [1.0.5] - 2026-07-04
+
+### ✨ New Features & Package Management
+* **Intelligent State Detection:** Added an automated system check using backend `dpkg` queries to determine if a targeted `.deb` package is already present on the host system before executing an installation path.
+* **Interactive Maintenance UI:** Introduced a dynamic Zenity dialogue box that triggers when an existing package is detected. Instead of failing or blindly overwriting, the interface now gives users explicit options to either **reinstall** or **remove (uninstall)** the application.
+* **Streamlined Routing Logic:** Refactored the underlying script flow to dynamically pivot between native `apt install --reinstall` and `apt purge/remove` sequences based on the user's graphical selection.
+
 ## [1.0.4] - 2026-05-29
 
 ### 🚀 Changed
