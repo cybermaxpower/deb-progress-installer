@@ -6,7 +6,7 @@
 </p>
 
 
-A lightweight graphical utility that uses [Zenity](https://github.com/GNOME/zenity) to show a visual progress bar while installing local Debian (`.deb`) packages.
+A lightweight graphical utility using [Zenity](https://github.com/GNOME/zenity) for seamless visual management (install, reinstall, remove) of local Debian (`.deb`) packages.
 
 ## ✨ Features
 
