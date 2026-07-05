@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img src="Live-Preview.png?v=2" alt="Application Preview" width="100%">
+  <img src="remove-reinstall.png?v=2" alt="Application Preview" width="100%">
 </p>
 
 A lightweight graphical utility that uses [Zenity](https://github.com/GNOME/zenity) to show a visual progress bar while installing local Debian (`.deb`) packages.
