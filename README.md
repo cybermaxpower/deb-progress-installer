@@ -16,25 +16,25 @@ Traditional GUI installers used to be the go-to standard, but they've been aband
 
 ---
 
+
 ## 🚀 One-Time Setup
 
+### Manual Download (Ubuntu / Zorin / Debian / LMDE)
 
-### Manual Download (Ubuntu / Zroin / Debian / LMDE)
+You can install the package directly without needing to manage external repositories. This works perfectly on Ubuntu, Debian, and all major derivative distributions:
 
-You can install the package directly without needing any external repositories. This works perfectly on Ubuntu, Debian, and other supported Linux distributions:
-
-[![Download .deb Installer](https://img.shields.io/badge/Download-.deb_Installer-blue?style=for-the-badge&logo=ubuntu)](https://github.com/cybermaxpower/deb-progress-installer/releases/latest/download/deb-progress-installer.deb)
+[![Download .deb Installer](https://img.shields.io/badge/Download-.deb_Installer-blue?style=for-the-badge&logo=ubuntu)](https://github.com/cybermaxpower/deb-progress-installer/releases/latest)
 
 #### Method A: Graphical Install (Easiest)
-1. Click the **Download .deb Installer** button above.
-2. Double-click the downloaded file in your **Downloads** folder to open your system's Software Store.
-3. Click **Install**.
+1. Click the **Download .deb Installer** badge above to go to the latest release page.
+2. Click on the `.deb` file under the **Assets** section to download it.
+3. Double-click the downloaded file in your **Downloads** folder to launch your system's default Software Store, then click **Install**.
 
 #### Method B: Quick Terminal Install
-If you prefer the command line, copy and paste this single command. It downloads the release securely and automatically installs any missing tools (like `zenity`):
+If you prefer the command line, copy and paste this single command. It queries the GitHub API to dynamically fetch the latest versioned package, downloads it safely to your temporary directory, and configures all required system dependencies automatically:
 
 ```bash
-wget -O /tmp/installer.deb https://github.com/cybermaxpower/deb-progress-installer/releases/latest/download/deb-progress-installer.deb && sudo apt install /tmp/installer.deb
+wget -O /tmp/installer.deb $(curl -s https://api.github.com/repos/cybermaxpower/deb-progress-installer/releases/latest | grep "browser_download_url.*deb" | cut -d '"' -f 4 | head -n 1) && sudo apt install /tmp/installer.deb && rm /tmp/installer.deb
 ```
 
 ## 🛠️ How to Enable & Use It
