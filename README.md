@@ -5,12 +5,19 @@
   <img src="Live-Preview.png?v=2" alt="Application Preview" width="100%">
 </p>
 
-<p align="center">
-  <img src="remove-reinstall.png?v=2" alt="Application Preview" width="100%">
-</p>
 
 A lightweight graphical utility that uses [Zenity](https://github.com/GNOME/zenity) to show a visual progress bar while installing local Debian (`.deb`) packages.
 
+## ✨ Features
+
+**Deb-progress-installer** brings full package lifecycle management to your desktop by wrapping native, robust backend systems (`apt` and `dpkg`) into a clean, modern user interface.
+
+* **📥 Seamless Local Installation:** Easily install any local `.deb` package without manually opening a terminal. The tool safely intercepts administrative hooks to resolve and download missing system dependencies automatically.
+* **🔄 Quick Reinstallation:** If the application is already on your system, the interface automatically detects it and provides an option to force a clean reinstallation—perfect for fixing broken binaries or resetting software states.
+* **❌ Clean Uninstallation / Removal:** No need to jump into a separate app store or run terminal commands to delete software. If the package is present, you can choose to purge and remove it completely right from the prompt.
+* **📊 Real-Time Progress Tracking:** Translates dense terminal status lines into a smooth, readable graphical progress bar using `Zenity`, providing terminal-free visual feedback.
+* **🧠 Dynamic System Audits:** Simulates package layouts before executing any changes to alert you of potential system conflicts or dependency errors before they occur.
+  
 
 ## 💡 Motivation: Why This Was Created
 
