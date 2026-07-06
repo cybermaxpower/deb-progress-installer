@@ -3,11 +3,43 @@
 # Ensure Zenity plays nicely with both Wayland and X11
 export GDK_BACKEND=wayland,x11
 
-# Force software rendering to completely eliminate GTK4 alpha/transparency bugs on legacy X11 compositors (e.g., Compiz)
-export GSK_RENDERER=software
-# Fix GTK4 rendering, redraw, and transparency glitches on X11 compositors (e.g., Ubuntu Unity / Compiz)
-#export GSK_RENDERER=cairo
+# Use the classic 2D Cairo engine (vastly faster than 'software' 3D emulation on the CPU)
+export GSK_RENDERER=cairo
 
+# FORCE background terminal utilities to output in English 
+# This prevents localized systems (e.g., Russian, French) from breaking the dependency parser
+export LC_ALL=C
+
+# ==========================================
+# RUNTIME GTK4 TRANSPARENCY PATCH (SANDBOX)
+# ==========================================
+# Create a secure temporary configuration environment
+GTK_SANDBOX=$(mktemp -d -t deb-installer-sandbox.XXXXXX)
+mkdir -p "$GTK_SANDBOX/gtk-4.0"
+
+# Automatically clean up the temporary sandbox directory when the script exits
+trap 'rm -rf "$GTK_SANDBOX"' EXIT
+
+# Inherit the user's existing custom CSS modifications if they have any
+if [ -f "$HOME/.config/gtk-4.0/gtk.css" ]; then
+    cp "$HOME/.config/gtk-4.0/gtk.css" "$GTK_SANDBOX/gtk-4.0/gtk.css"
+fi
+
+# Append the precise target selectors to force solid background rendering
+# without breaking child component layouts or hardcoding specific colors
+cat << 'EOF' >> "$GTK_SANDBOX/gtk-4.0/gtk.css"
+window, dialog, .background, main, box.vertical {
+    background-color: @window_bg_color;
+    opacity: 1.0;
+}
+EOF
+
+# Direct this specific process runtime to use our patched configuration workspace
+export XDG_CONFIG_HOME="$GTK_SANDBOX"
+
+# ==========================================
+# START APPLICATION PIPELINE
+# ==========================================
 # Ensure an installation file was passed
 if [ -z "$1" ]; then
     zenity --error --title="DEB Installer" --text="No installation file provided." --width=300
@@ -17,22 +49,18 @@ fi
 DEB_FILE="$1"
 APP_NAME=$(basename "$DEB_FILE")
 
-# ==========================================
-# 1. PRE-INSTALL DEPENDENCY CHECK
-# ==========================================
+# PRE-INSTALL DEPENDENCY CHECK
 INTERNAL_PKG_NAME=$(dpkg-deb -f "$DEB_FILE" Package 2>/dev/null)
 if [ -z "$INTERNAL_PKG_NAME" ]; then
     INTERNAL_PKG_NAME=$(basename "$DEB_FILE" .deb | cut -d'_' -f1)
 fi
 
-# Create temporary logs to safely audit the simulation
 SIM_OUT_LOG=$(mktemp)
 SIM_ERR_LOG=$(mktemp)
 
 apt-get install -s "$DEB_FILE" >"$SIM_OUT_LOG" 2> >(grep -v -E "NOTE: This is only a simulation|apt-get needs root privileges|Keep also in mind that locking is deactivated|so don't depend on the relevance" > "$SIM_ERR_LOG")
 SIM_EXIT_CODE=$?
 
-# If there is a genuine error left over after filtering the banner noise out
 if [ $SIM_EXIT_CODE -ne 0 ] && [ -s "$SIM_ERR_LOG" ]; then
     REAL_ERROR=$(cat "$SIM_ERR_LOG" | grep -E "E:|Error:" | tail -n 1)
     zenity --error \
@@ -43,7 +71,6 @@ if [ $SIM_EXIT_CODE -ne 0 ] && [ -s "$SIM_ERR_LOG" ]; then
     exit 1
 fi
 
-# Parse the simulation log for true missing dependencies
 DEPENDENCIES=$(cat "$SIM_OUT_LOG" | grep "^Inst " | awk '{print $2}' | grep -v -x "$INTERNAL_PKG_NAME")
 rm -f "$SIM_OUT_LOG" "$SIM_ERR_LOG"
 
@@ -61,26 +88,39 @@ if [ ! -z "$DEPENDENCIES" ]; then
 fi
 
 # ==========================================
-# 2. STATE DETECTION (Install vs Reinstall vs Remove)
+# 2. STATE DETECTION (Install vs Upgrade vs Manage)
 # ==========================================
 dpkg-query -W -f='${Status}' "$INTERNAL_PKG_NAME" 2>/dev/null | grep -q "ok installed"
 ALREADY_INSTALLED=$?
 
 ACTION=""
+
 if [ $ALREADY_INSTALLED -eq 0 ]; then
-    # Clean size scaling preventing text row clipping and ensuring rendering stability
-    ACTION=$(zenity --list \
-        --title="Manage $INTERNAL_PKG_NAME" \
-        --text="<b>$APP_NAME</b> is already installed on your system.\nWhat would you like to do?" \
-        --radiolist \
-        --column="Select" --column="Action" \
-        TRUE "Reinstall the application" \
-        FALSE "Remove (Uninstall) the application" \
-        --width=480 --height=320)
-        
-    # If they click Cancel or close the window, exit gracefully
-    if [ $? -ne 0 ]; then
-        exit 0
+    # Extract version numbers for analysis
+    INSTALLED_VER=$(dpkg-query -W -f='${Version}' "$INTERNAL_PKG_NAME" 2>/dev/null)
+    DEB_VER=$(dpkg-deb -f "$DEB_FILE" Version 2>/dev/null)
+
+    # Compare versions: Check if the incoming DEB file is strictly newer
+    dpkg --compare-versions "$DEB_VER" gt "$INSTALLED_VER" 2>/dev/null
+    IS_NEWER=$?
+
+    if [ $IS_NEWER -eq 0 ]; then
+        # The file is an update! Skip the prompt and set action straight to upgrade
+        ACTION="Upgrade the application"
+    else
+        # It's the same version or older, show the management dialogue
+        ACTION=$(zenity --list \
+            --title="Manage $INTERNAL_PKG_NAME" \
+            --text="<b>$APP_NAME</b> is already installed ($INSTALLED_VER).\nWhat would you like to do?" \
+            --radiolist \
+            --column="Select" --column="Action" \
+            TRUE "Reinstall the application" \
+            FALSE "Remove (Uninstall) the application" \
+            --width=480 --height=320)
+            
+        if [ $? -ne 0 ]; then
+            exit 0
+        fi
     fi
 fi
 
@@ -94,6 +134,10 @@ if [ "$ACTION" = "Remove (Uninstall) the application" ]; then
     TITLE_TEXT="Uninstalling Software"
     START_TEXT="Authenticating and removing application..."
     APT_CMD="pkexec apt-get purge -y $INTERNAL_PKG_NAME -o APT::Status-Fd=3"
+elif [ "$ACTION" = "Upgrade the application" ]; then
+    TITLE_TEXT="Updating Software"
+    START_TEXT="Authenticating and upgrading to version $DEB_VER..."
+    APT_CMD="pkexec apt-get install -y --only-upgrade $DEB_FILE -o APT::Status-Fd=3"
 elif [ "$ACTION" = "Reinstall the application" ]; then
     TITLE_TEXT="Reinstalling Software"
     START_TEXT="Authenticating and restarting installer..."
@@ -104,7 +148,6 @@ else
     APT_CMD="pkexec apt-get install -y $DEB_FILE -o APT::Status-Fd=3"
 fi
 
-# Start execution engine in background
 $APT_CMD 3>"$APT_STATUS_LOG" 2>"$RAW_ERROR_LOG" &
 INSTALL_PID=$!
 
@@ -142,7 +185,7 @@ while kill -0 $INSTALL_PID 2>/dev/null; do
             echo "# $STATUS_TEXT ($ROUNDED_PCT%)"
         fi
     fi
-    sleep 0.1
+    sleep 0.2
 done
 
 echo "100"
@@ -176,7 +219,7 @@ if [ $INSTALL_EXIT_STATUS -ne 0 ]; then
 fi
 
 # ==========================================
-# 6. FINAL SANITY CHECK (Success Notification)
+# 6. FINAL SANITY CHECK
 # ==========================================
 dpkg-query -W -f='${Status}' "$INTERNAL_PKG_NAME" 2>/dev/null | grep -q "installed"
 IS_PRESENT=$?

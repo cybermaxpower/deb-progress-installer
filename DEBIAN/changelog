@@ -1,15 +1,34 @@
+deb-progress-installer (1.1.0) stable; urgency=medium
+
+  * Smart Version Upgrade Detection: Implemented dpkg --compare-versions to 
+    automatically trigger seamless upgrades for newer incoming local .deb files.
+  * Localization Guard rails: Forced background processing utilities to fallback 
+    to LC_ALL=C to prevent international language dependency translation mismatches.
+  * Performance Boost: Switched core GTK pipeline to use the 2D Cairo renderer 
+    (GSK_RENDERER=cairo) to eliminate UI stuttering and reduce CPU overhead.
+  * GTK4 Theme Canvas Isolation: Resolved custom compositor transparency glitches 
+    by introducing an isolated runtime CSS sandbox at startup.
+
+ --  cybermaxpower <carber.maxpower@gmail.com>  Mon, 06 Jul 2026 21:00:00 +0100
+deb-progress-installer (1.0.7) unstable; urgency=medium
+
+  * Fix GTK4 rendering transparency and redraw glitches on legacy X11/Compiz 
+    compositors by forcing the software renderer backend.
+  * Stabilize live progress tracking loop window scaling routines.
+  -- cybermaxpower <carber.maxpower@gmail.com>  Sun, 05 Jul 2026 09:58:00 +0100
+
 deb-progress-installer (1.0.5) unstable; urgency=medium
 
   * Added and tested version 1.0.5 release updates.
   * Added Reinstall or Remove if application is install on system.
 
- -- cybermaxpower <carber.maxpower@gmail.com>  Sat, 04 Jul 2026 21:50:00 +0100
+  -- cybermaxpower <carber.maxpower@gmail.com>  Sat, 04 Jul 2026 21:50:00 +0100
 deb-progress-installer (1.0.4) unstable; urgency=medium
 
   * Added and tested version 1.0.4 release updates.
   * Minor optimizations and script stability improvements.
 
- -- cybermaxpower <carber.maxpower@gmail.com>  Fri, 29 May 2026 23:30:00 +0100
+  -- cybermaxpower <carber.maxpower@gmail.com>  Fri, 29 May 2026 23:30:00 +0100
 
 deb-progress-installer (1.0.3) unstable; urgency=medium
 
