@@ -40,11 +40,14 @@ You can install the package directly without needing to manage external reposito
 2. Click on the `.deb` file under the **Assets** section to download it.
 3. Double-click the downloaded file in your **Downloads** folder to launch your system's default Software Store, then click **Install**.
 
-#### Method B: Quick Terminal Install
+Markdown
+### Method B: Quick Terminal Install
+
 If you prefer the command line, copy and paste this single command. It queries the GitHub API to dynamically fetch the latest versioned package, downloads it safely to your temporary directory, and configures all required system dependencies automatically:
 
 ```bash
-wget -O /tmp/installer.deb $(curl -s https://api.github.com/repos/cybermaxpower/deb-progress-installer/releases/latest | grep "browser_download_url.*deb" | cut -d '"' -f 4 | head -n 1) && sudo apt install /tmp/installer.deb && rm /tmp/installer.deb
+wget -O /tmp/installer.deb $(curl -s [https://api.github.com/repos/cybermaxpower/deb-progress-installer/releases/latest](https://api.github.com/repos/cybermaxpower/deb-progress-installer/releases/latest) | grep -o 'https://[^"]*\.deb' | head -n 1) && sudo apt install /tmp/installer.deb && rm /tmp/installer.deb
+
 ```
 
 ## 🛠️ How to Enable & Use It
