@@ -91,5 +91,16 @@ Regex Status Filtering: The core script monitors specific packaging triggers, su
 
 Zenity UI Generation: It parses those terminal triggers in real-time, instantly converting raw text percentages into a smooth, native GTK graphical progress bar via zenity.
 
+
+## ⚖️ Warranty & Liability Disclaimer
+NO WARRANTY (PROVIDED "AS IS")
+This software is provided completely "as is" without any warranty of any kind, either expressed or implied.
+
+
+LIMITATION OF LIABILITY
+Use at Your Own Risk: The developer is not liable for any damage, data loss, or system issues that may occur on your computer from installing, running, or uninstalling software using this tool.
+User Responsibility: Uninstalling application containers can permanently delete local user configurations, settings, or saved files linked to those specific apps. It is your absolute responsibility to verify what you are deleting before confirming.
+
+
 ## Development Notes
 This application was designed and developed in collaboration with Google Gemini, utilizing AI-assisted software engineering to build the core utility and structure the native Debian packaging pipeline.
