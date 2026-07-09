@@ -92,15 +92,18 @@ Regex Status Filtering: The core script monitors specific packaging triggers, su
 Zenity UI Generation: It parses those terminal triggers in real-time, instantly converting raw text percentages into a smooth, native GTK graphical progress bar via zenity.
 
 
-## ⚖️ Warranty & Liability Disclaimer
-NO WARRANTY (PROVIDED "AS IS")
-This software is provided completely "as is" without any warranty of any kind, either expressed or implied.
+## ⚖️ Disclaimer & Warranty
 
 
-LIMITATION OF LIABILITY
-Use at Your Own Risk: The developer is not liable for any damage, data loss, or system issues that may occur on your computer from installing, running, or uninstalling software using this tool.
-User Responsibility: Uninstalling application containers can permanently delete local user configurations, settings, or saved files linked to those specific apps. It is your absolute responsibility to verify what you are deleting before confirming.
+### PROVIDED "AS IS" — NO WARRANTY
+This software application is provided by the copyright holders and contributors "as is" and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are completely disclaimed. In no event shall the developer or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
 
+### SYSTEM MODIFICATIONS & RISK
+System-Wide Access: Unlike sandboxed container formats (such as Flatpak or Snap), this tool handles native Debian (.deb) packages. These packages are extracted and executed system-wide using elevated administrative privileges (pkexec). Running installations through this frontend will directly alter core system directories, modify shared infrastructure libraries, and manipulate your base operating system configuration.
 
-## Development Notes
-This application was designed and developed in collaboration with Google Gemini, utilizing AI-assisted software engineering to build the core utility and structure the native Debian packaging pipeline.
+Purge Operations: Utilizing the "Remove (Uninstall)" feature executes a complete system purge (apt-get purge). This process will permanently delete system-wide configuration files and local assets associated with that package.
+
+### USER RESPONSIBILITY
+The end-user assumes absolute and full responsibility for any software operations, updates, or removals executed using this application frontend.
+
+Because native package management interacts directly with the core operating system layer, you must carefully verify the source, integrity, and dependency requirements of any .deb file before confirming administrative authentication. The author holds no liability or responsibility for broken system packages, unresolved dependency conflicts, accidental software removal, or any misuse of this scripting automation.
