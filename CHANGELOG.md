@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0] - 2026-07-06
+
+### ✨ Added
+* **Smart Version Upgrade Detection:** Implemented `dpkg --compare-versions` to automatically trigger seamless upgrades when a newer local `.deb` file is supplied, bypassing unnecessary reinstall/remove prompts.
+* **Localization Guardrails:** Forced background processing utilities to fallback to the standard C locale (`LC_ALL=C`) to ensure text-based dependency parsing works flawlessly across all international system languages.
+
+### ⚡ Changed
+* **Performance Optimization (Cairo Backend):** Switched the core GTK pipeline engine to use the 2D Cairo renderer (`GSK_RENDERER=cairo`) to drastically reduce CPU overhead and eliminate UI stuttering during progress tracking.
+
+### 🛠️ Fixed
+* **Theme Rendering Fix:** Resolved visibility glitches on certain X11 configurations where custom desktop themes made the Zenity window render transparently. Added a temporary custom CSS property at startup to explicitly enforce a solid background color using standard GTK style overrides.
+
 All notable changes to this project will be documented in this file.
 ## [1.0.7] - 2026-07-05
 
