@@ -1,10 +1,9 @@
 #!/bin/bash
 # ==============================================================================
-# SCRIPT:       build-package.sh
+# SCRIPT:       build.sh
 # DESCRIPTION:  Automates the compilation of the deb-progress-installer
 #               into a standard Debian package (.deb) with desktop integration,
 #               copyright metadata, and a standardized changelog.
-# VERSION:      1.1.5
 # ==============================================================================
 
 # Halt script execution on any unexpected error
