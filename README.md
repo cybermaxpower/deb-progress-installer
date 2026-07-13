@@ -60,12 +60,12 @@ Right-click the .deb file.
 
 Select Open With Other Application (or Properties -> Open With, depending on your desktop layout).
 
-Look through the list and select Deb Installer.
+Look through the list and select Deb Progress Installer.
 
 Click the Set as Default button.
 
 ### Step 2: Open any `.deb` File
-From now on, simply double-click (or right-click -> *Open With* -> *Deb Installer*) any local `.deb` file. 
+From now on, simply double-click (or right-click -> *Open With* -> *Deb Progress Installer*) any local `.deb` file. 
 
 The installer will run a quick background audit and automatically adapt to your system's state:
 
