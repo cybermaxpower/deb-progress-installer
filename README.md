@@ -64,12 +64,16 @@ Look through the list and select Deb Installer.
 
 Click the Set as Default button.
 
-### Step 2: Run an Installation
-From now on, whenever you want to install a software package:
+### Step 2: Open any `.deb` File
+From now on, simply double-click (or right-click -> *Open With* -> *Deb Installer*) any local `.deb` file. 
 
-Simply double-click or right-click -> Open With any .deb file.
+The installer will run a quick background audit and automatically adapt to your system's state:
 
-A clean, visual Zenity progress bar will pop up to show you exactly how the installation is progressing!
+* **📥 New Installation:** If the app isn't on your system yet, the installer will immediately fetch any missing dependencies and show you a clean, real-time visual progress bar.
+* **🔄 Reinstall or Remove:** If the exact same version of the app is already installed, a graphical menu will prompt you to choose between:
+  1. **Reinstall:** Forces a clean reinstall of the package (perfect for fixing corrupted app states).
+  2. **Remove:** Completely purges the application from your system.
+* **🧠 Smart Upgrade:** If you open a `.deb` file that is newer than your currently installed version, the app automatically runs a seamless upgrade, keeping your data intact without forcing a manual uninstall first.
 
 ## 🔍 How It Works (Extended Description)
 Standard command-line tools like dpkg don't natively provide a graphical progress readout, which can leave desktop users wondering if an installation is stuck.
