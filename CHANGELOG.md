@@ -1,5 +1,16 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+## [1.1.5] - 2026-07-13
+
+### Added
+- Automated dependency simulation checking.
+- Smart upgrade, reinstall, and uninstall state detection flows.
+
+### Removed
+- All theme-forcing overrides and GTK custom styling configuration workarounds (theme management is now fully delegated to the user's system compositor).
+
 ## [1.1.0] - 2026-07-06
 
 ### ✨ Added
