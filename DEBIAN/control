@@ -1,8 +1,0 @@
-Package: deb-progress-installer
-Version: 1.1.0
-Architecture: all
-Maintainer: cybermaxpower <carber.maxpower@gmail.com>
-Depends: zenity, apt, dpkg
-Section: utils
-Priority: optional
-Description: A lightweight graphical utility using Zenity for visual package management.
