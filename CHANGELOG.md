@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [1.1.6] 2026-08-02
 
-⚙️ Non-Interactive Execution Safeguards: Added DEBIAN_FRONTEND=noninteractive and dpkg configuration flags (--force-confdef, --force-confold). This prevents the application from hanging silently in the background when installing wrapper packages (like MX Night Light) or software that triggers post-install web fetches and terminal keyboard prompts.
+⚙️ Non-Interactive Execution Safeguards: Added DEBIAN_FRONTEND=noninteractive and dpkg configuration flags (--force-confdef, --force-confold). This prevents the application from hanging silently in the background when installing wrapper packages or software that triggers post-install web fetches and terminal keyboard prompts.
 
 🔖 Metadata & Header Bump: Updated all internal metadata and script headers cleanly across the codebase to v1.1.6.
 
