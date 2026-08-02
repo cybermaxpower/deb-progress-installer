@@ -1,11 +1,11 @@
 #!/bin/bash
 # ==============================================================================
 # APPLICATION:  DEB Progress Installer
-# VERSION:      1.1.5
+# VERSION:      1.1.6
 # DESCRIPTION:  A streamlined, native GTK graphical frontend wrapper for
 #               advanced dpkg/apt package installations. Features automated 
-#               dependency checking, intelligent version upgrade handling, 
-#               and localization safeguards.
+#               dependency checking, non-interactive execution safeguards,
+#               intelligent version upgrade handling, and localization options.
 # LICENSE:      MIT License
 # ==============================================================================
 
@@ -104,22 +104,25 @@ fi
 APT_STATUS_LOG=$(mktemp)
 RAW_ERROR_LOG=$(mktemp)
 
+# Flags to enforce non-interactive execution and pipe status updates
+APT_FLAGS="-y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold -o APT::Status-Fd=3"
+
 if [ "$ACTION" = "Remove (Uninstall) the application" ]; then
     TITLE_TEXT="Uninstalling Software"
     START_TEXT="Authenticating and removing application..."
-    APT_CMD="pkexec apt-get purge -y $INTERNAL_PKG_NAME -o APT::Status-Fd=3"
+    APT_CMD="pkexec env DEBIAN_FRONTEND=noninteractive apt-get purge $APT_FLAGS $INTERNAL_PKG_NAME"
 elif [ "$ACTION" = "Upgrade the application" ]; then
     TITLE_TEXT="Updating Software"
     START_TEXT="Authenticating and upgrading to version $DEB_VER..."
-    APT_CMD="pkexec apt-get install -y --only-upgrade $DEB_FILE -o APT::Status-Fd=3"
+    APT_CMD="pkexec env DEBIAN_FRONTEND=noninteractive apt-get install --only-upgrade $APT_FLAGS $DEB_FILE"
 elif [ "$ACTION" = "Reinstall the application" ]; then
     TITLE_TEXT="Reinstalling Software"
     START_TEXT="Authenticating and restarting installer..."
-    APT_CMD="pkexec apt-get install -y --reinstall $DEB_FILE -o APT::Status-Fd=3"
+    APT_CMD="pkexec env DEBIAN_FRONTEND=noninteractive apt-get install --reinstall $APT_FLAGS $DEB_FILE"
 else
     TITLE_TEXT="Installing Software"
     START_TEXT="Authenticating and starting installer..."
-    APT_CMD="pkexec apt-get install -y $DEB_FILE -o APT::Status-Fd=3"
+    APT_CMD="pkexec env DEBIAN_FRONTEND=noninteractive apt-get install $APT_FLAGS $DEB_FILE"
 fi
 
 $APT_CMD 3>"$APT_STATUS_LOG" 2>"$RAW_ERROR_LOG" &
