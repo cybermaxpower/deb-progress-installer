@@ -32,17 +32,8 @@ Traditional GUI installers used to be the go-to standard, but they've been aband
 
 You can install the package directly without needing to manage external repositories. This works perfectly on Ubuntu, Debian, and all major derivative distributions:
 
+
  ## 📥 Installation
-
-[![Download .deb Package](https://img.shields.io/badge/Download-.deb_Package-blue?style=for-the-badge&logo=debian)](https://github.com/cybermaxpower/deb-progress-installer/releases/latest)
-
-
-
-### Method 1 : One-Liner Bootstrap (Quick Terminal Setup)
-
-If you are installing for the first time on a fresh system, run this single command to fetch the latest release, set up dependencies, and install the package automatically:
-
-## 📥 Installation
 
 [![Download .deb Package](https://img.shields.io/badge/Download-.deb_Package-blue?style=for-the-badge&logo=debian)](https://github.com/cybermaxpower/deb-progress-installer/releases/latest)
 
