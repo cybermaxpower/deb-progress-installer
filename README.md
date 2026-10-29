@@ -32,17 +32,25 @@ Traditional GUI installers used to be the go-to standard, but they've been aband
 
 You can install the package directly without needing to manage external repositories. This works perfectly on Ubuntu, Debian, and all major derivative distributions:
 
-[![Download .deb Installer](https://img.shields.io/badge/Download-.deb_Installer-blue?style=for-the-badge&logo=ubuntu)](https://github.com/cybermaxpower/deb-progress-installer/releases/latest)
+​📥 Installation
 
-#### Method A: Graphical Install (Easiest)
-1. Click the **Download .deb Installer** badge above to go to the latest release page.
-2. Click on the `.deb` file under the **Assets** section to download it.
-3. Double-click the downloaded file in your **Downloads** folder to launch your system's default Software Store, then click **Install**.
-
-#### Method B: Quick Terminal Install
-If you prefer the command line, copy and paste this single command. It queries the GitHub API to dynamically fetch the latest versioned package, downloads it safely to your temporary directory, and configures all required system dependencies automatically:
-
-    wget -O /tmp/installer.deb $(curl -s [https://api.github.com/repos/cybermaxpower/deb-progress-installer/releases/latest](https://api.github.com/repos/cybermaxpower/deb-progress-installer/releases/latest) | grep -o 'https://[^"]*\.deb' | head -n 1) && sudo apt install /tmp/installer.deb && rm /tmp/installer.deb
+​Choose the installation method that works best for you:
+​[Download .deb Package Badge link: https://github.com/cybermaxpower/deb-progress-installer/releases/latest]
+​Option 1: One-Liner Terminal Install (Recommended)
+​If you prefer the command line, run this single command. It queries the GitHub API using pure wget to automatically grab the latest release package, installs all required system dependencies via apt, and cleans up after itself:
+​wget -qO- https://api.github.com/repos/cybermaxpower/deb-progress-installer/releases/latest 
+| grep "browser_download_url.*.deb" 
+| cut -d : -f 2,3 
+| tr -d " 
+| xargs -I {} wget -q {} -O /tmp/deb-progress-installer.deb 
+&& sudo apt-get update && sudo apt-get install -y /tmp/deb-progress-installer.deb 
+&& rm /tmp/deb-progress-installer.deb
+​Option 2: Graphical / Manual Install
+​Click the Download .deb Package badge above to visit the latest release page.
+​Under the Assets section, download the .deb file.
+​Open your file manager (Nemo, Caja, Thunar, etc.) and double-click the downloaded .deb file to open it with your package installer, or run:
+​sudo apt-get update
+sudo apt-get install ./deb-progress-installer_*.deb
 
 ---
 
