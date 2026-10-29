@@ -42,15 +42,26 @@ You can install the package directly without needing to manage external reposito
 
 If you are installing for the first time on a fresh system, run this single command to fetch the latest release, set up dependencies, and install the package automatically:
 
+## 📥 Installation
+
+[![Download .deb Package](https://img.shields.io/badge/Download-.deb_Package-blue?style=for-the-badge&logo=debian)](https://github.com/cybermaxpower/deb-progress-installer/releases/latest)
+
+---
+
+### Method 1: One-Liner Bootstrap (Quick Terminal Setup)
+
+If you are installing for the first time on a fresh system, run this single command to fetch the latest release, set up dependencies, and install the package automatically:
+
 ```bash
-wget -qO- https://api.github.com/repos/cybermaxpower/deb-progress-installer/releases/latest \
-| grep "browser_download_url.*\.deb" \
-| cut -d : -f 2,3 \
-| tr -d \" \
+wget -qO- [https://api.github.com/repos/cybermaxpower/deb-progress-installer/releases/latest](https://api.github.com/repos/cybermaxpower/deb-progress-installer/releases/latest) \
+| grep -o '[https://github.com/](https://github.com/)[^"]*deb-progress-installer[^"]*\.deb' \
+| head -n 1 \
 | xargs -I {} wget -q {} -O /tmp/deb-progress-installer.deb \
 && sudo apt-get update && sudo apt-get install -y /tmp/deb-progress-installer.deb \
 && rm /tmp/deb-progress-installer.deb
-```
+
+
+
 ### Method 2: Graphical Setup (Standard)
 
 1. Click the **Download .deb Package** badge above to visit the latest release page.
