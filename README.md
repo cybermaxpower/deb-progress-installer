@@ -35,7 +35,6 @@ You can install the package directly without needing to manage external reposito
 
  ## 📥 Installation
 
-[![Download .deb Package](https://img.shields.io/badge/Download-.deb_Package-blue?style=for-the-badge&logo=debian)](https://github.com/cybermaxpower/deb-progress-installer/releases/latest)
 
 ---
 
@@ -50,10 +49,14 @@ wget -qO- [https://api.github.com/repos/cybermaxpower/deb-progress-installer/rel
 | xargs -I {} wget -q {} -O /tmp/deb-progress-installer.deb \
 && sudo apt-get update && sudo apt-get install -y /tmp/deb-progress-installer.deb \
 && rm /tmp/deb-progress-installer.deb
-
+```
 
 
 ### Method 2: Graphical Setup (Standard)
+
+[![Download .deb Package](https://img.shields.io/badge/Download-.deb_Package-blue?style=for-the-badge&logo=debian)](https://github.com/cybermaxpower/deb-progress-installer/releases/latest)
+
+
 
 1. Click the **Download .deb Package** badge above to visit the latest release page.
 2. Download the `.deb` file from the **Assets** section.
